@@ -1,0 +1,31 @@
+{
+  "kind": "generate",
+  "title": "ai-rank-3-v2",
+  "original_idea": "",
+  "audio_type": "sfx",
+  "prompt": "cheerful third prize fanfare, warm bells and plucked synth, friendly arcade reward, concise and polished",
+  "prompt_used": "TrackType: SFX, cheerful third prize fanfare, warm bells and plucked synth, friendly arcade reward, concise and polished.",
+  "sound_fields": {
+    "source": "",
+    "action": "",
+    "material": "",
+    "space": ""
+  },
+  "bpm": null,
+  "seconds": 1.1,
+  "negative_prompt": null,
+  "cfg": 5.0,
+  "steps": 8,
+  "variations": 1,
+  "seed": 26198553,
+  "candidate": 1,
+  "file": "ai-rank-3-v2.wav",
+  "sample_rate": 44100,
+  "bit_depth": 24,
+  "created": "2026-10-22T17:51:44",
+  "backend": "sa3-torch",
+  "model": "sm-sfx + same-s",
+  "peak_dbfs": -1.0,
+  "raw_peak_dbfs": 0.0,
+  "ceiling_gain_db": -1.0
+}

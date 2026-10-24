@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071b2d" />
+    <title>とくとくタッチ | 来店ポイント</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="kiosk-shell" id="app" data-mode="customer">
+      <header class="topbar">
+        <div class="brand-lockup" aria-label="とくとくタッチ">
+          <div class="brand-mark" id="brand-mark">T</div>
+          <div>
+            <p class="eyebrow">KITA MART / MEMBER BENEFITS</p>
+            <strong>とくとくタッチ</strong>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="store-pill"><span class="live-dot"></span> <span id="store-name-display">北町店</span></span>
+          <button class="icon-button staff-entry" type="button" data-action="staff-login" aria-label="店員ログイン">⚙</button>
+        </div>
+      </header>
+
+      <section class="customer-view" aria-live="polite">
+        <div class="customer-grid">
+          <aside class="welcome-panel">
+            <div class="sun-orbit orbit-one"></div>
+            <div class="sun-orbit orbit-two"></div>
+            <div class="welcome-copy">
+              <span class="season-tag">TODAY'S BONUS</span>
+              <h1>待ち時間に、<br /><em>運だめし。</em></h1>
+              <p>ゲームを楽しんで、今日だけの来店ポイントをゲットしよう。</p>
+              <div class="mini-stats">
+                <div><strong>1日1回</strong><span>チャレンジ</span></div>
+                <div><strong>最大500pt</strong><span>チャンス</span></div>
+              </div>
+            </div>
+            <div class="welcome-art" aria-hidden="true">
+              <div class="ticket ticket-back">BONUS</div>
+              <div class="ticket ticket-front"><span>+ POINT</span><strong>?</strong></div>
+              <div class="spark spark-a">✦</div><div class="spark spark-b">✧</div>
+            </div>
+          </aside>
+
+          <section class="game-panel">
+            <div class="panel-heading">
+              <div><span class="section-kicker">MEMBER GAME</span><h2 id="screen-title">来店ポイントを<br />受け取ろう</h2></div>
+              <span class="round-chip">本日のチャンス</span>
+            </div>
+            <div class="screen-content" id="screen-content"></div>
+            <div class="progress-dots" id="progress-dots" aria-label="進行状況"></div>
+          </section>
+        </div>
+        <footer class="customer-footer"><span>画面をタッチして操作してください</span><span>お問い合わせはスタッフまで</span></footer>
+      </section>
+
+      <section class="admin-view" hidden>
+        <div class="admin-heading"><div><span class="section-kicker">STAFF ONLY / CAMPAIGN CONTROL</span><h2>店員設定コンソール</h2><p>抽選内容とNSS連携先を設定します。お客様画面からはアクセスできません。</p></div><div class="admin-heading-actions"><button class="secondary-button" type="button" data-action="show-report">付与実績レポート</button><button class="text-button" type="button" data-action="toggle-admin">← ゲーム画面へ戻る</button></div></div>
+        <form class="settings-card" id="settings-form">
+          <div class="settings-toolbar"><div><h3>抽選設定</h3><p>2.2.2.4 来店ポイント情報メンテナンス</p></div><div class="connection-status"><span class="live-dot"></span> SC接続 / ONLINE</div></div>
+          <div class="form-grid">
+            <label class="field"><span>当選確率パラメータ</span><div class="input-with-unit"><input name="parameter" type="number" min="0" max="100" value="100" /><b>%</b></div><small>0〜100の範囲</small></label>
+            <label class="field"><span>使用等数</span><select name="rankCount"><option value="3">3等まで</option><option value="4">4等まで</option><option value="5">5等まで</option></select><small>使用しない等級は無効化</small></label>
+          </div>
+          <div class="api-settings">
+            <div class="api-settings-heading"><div><h3>NSS連携WebAPI接続設定</h3><p>8.1 NSS連携_WebAPI_IF仕様書準拠</p></div><span class="secure-badge">🔒 店員専用</span></div>
+            <div class="form-grid api-grid">
+              <label class="field"><span>接続方式</span><select name="apiMode"><option value="demo">デモ（ローカルシミュレーション）</option><option value="live">実APIへ接続</option></select><small>本番では実API接続を選択</small></label>
+              <label class="field"><span>プロトコル</span><select name="apiProtocol"><option value="https">HTTPS</option><option value="http">HTTP（検証環境のみ）</option></select><small>仕様書の基本URL形式に準拠</small></label>
+              <label class="field field-wide"><span>CSdelightサーバーIP / ホスト名</span><input name="apiHost" type="text" value="192.168.1.100" placeholder="例：192.168.1.100" /><small>接続先：{プロトコル}://{ホスト}/CSPointApi</small></label>
+              <label class="field"><span>ポート番号（任意）</span><input name="apiPort" type="number" min="1" max="65535" placeholder="443" /><small>未入力時はプロトコル標準ポート</small></label>
+              <label class="field"><span>店舗コード</span><input name="storeId" type="number" min="1" max="99999" value="123" /><small>1〜99999</small></label>
+              <label class="field"><span>店舗名称</span><input name="storeName" type="text" maxlength="40" value="北町店" /><small>お客様画面の店舗表示に反映</small></label>
+              <label class="field"><span>端末番号</span><input name="terminalNo" type="number" min="1" max="99999" value="1" /><small>1〜99999</small></label>
+              <label class="field field-wide"><span>とくとくタッチ アイコン画像</span><input name="brandImage" type="file" accept="image/png,image/jpeg,image/webp" /><small>ヘッダー右側の店舗アイコンとして表示</small></label>
+              <label class="field field-wide"><span>会員登録QRコード画像</span><input name="registrationQr" type="file" accept="image/png,image/jpeg,image/webp" /><small>会員証をお持ちでない方向けに表示する任意QRコード</small></label>
+            </div>
+            <div class="image-preview-row"><div><span>店舗アイコン</span><img id="brand-image-preview" alt="店舗アイコンプレビュー" /></div><div><span>会員登録QR</span><img id="qr-image-preview" alt="会員登録QRプレビュー" /></div></div>
+          <div class="api-endpoints"><span>ポイント参照</span><code>POST /CsPointService/GetPoint</code><span>ポイント更新</span><code>POST /CsPointService/AffectPoint</code></div>
+          </div>
+          <div class="award-policy"><div><h3>重複付与防止ルール</h3><p>同一会員への来店ポイント付与間隔を制御します。</p></div><div class="policy-controls"><label class="field"><span>判定方式</span><select name="awardPolicy"><option value="daily">1営業日につき1回</option><option value="hours">N時間以内は許容しない</option></select></label><label class="field"><span>制限時間（時間）</span><input name="cooldownHours" type="number" min="1" max="168" value="24" /><small>時間方式の場合のみ使用</small></label></div></div>
+          <div class="customer-display-settings"><div><h3>お客様画面表示・自動復帰</h3><p>会員情報の表示範囲と、結果画面からTOPへ戻る時間を設定します。</p></div><div class="policy-controls"><label class="field checkbox-field"><span>会員氏名を表示</span><input name="showMemberName" type="checkbox" checked /><small>OFFの場合は会員番号とポイントのみ表示</small></label><label class="field"><span>結果表示後の自動TOP復帰（秒）</span><input name="resultResetSeconds" type="number" min="5" max="120" value="15" /><small>5〜120秒</small></label></div></div>
+          <div class="prize-table-wrap"><table class="prize-table"><thead><tr><th>等級</th><th>賞名</th><th>当選確率</th><th>付加ポイント</th></tr></thead><tbody id="prize-rows"></tbody></table></div>
+          <div class="form-note"><span>i</span><p>当選確率の合計は100%、ポイントは上位等級ほど高く設定してください。</p></div>
+          <div class="admin-actions"><button class="secondary-button" type="button" data-action="reset-settings">初期値に戻す</button><button class="primary-button" type="submit">設定を保存する <span>→</span></button></div>
+          <p class="save-message" id="save-message" role="status"></p>
+        </form>
+      </section>
+      <section class="report-view" hidden>
+        <div class="admin-heading"><div><span class="section-kicker">STAFF ONLY / AWARD REPORT</span><h2>付与実績レポート</h2><p>直近7営業日の来店ポイント付与状況を表示します。</p></div><button class="text-button" type="button" data-action="hide-report">← 設定画面へ戻る</button></div>
+        <div class="report-card"><div class="report-toolbar"><div><h3>直近7営業日</h3><p id="report-period"></p></div><button class="secondary-button" type="button" data-action="refresh-report">再集計</button></div><div class="report-summary" id="report-summary"></div><div class="report-table-wrap"><table class="report-table"><thead><tr><th>営業日</th><th>1等</th><th>2等</th><th>3等</th><th>4等</th><th>5等</th><th>はずれ</th><th>付与人数</th><th>付与ポイント合計</th></tr></thead><tbody id="report-rows"></tbody></table></div><p class="report-note">※営業日は店舗営業日設定に基づく想定です。デモでは暦日を営業日として集計しています。</p></div>
+      </section>
+    </main>
+    <dialog class="staff-dialog" id="staff-dialog">
+      <form method="dialog" class="staff-dialog-card" id="staff-login-form">
+        <button class="dialog-close" value="cancel" aria-label="閉じる">×</button>
+        <div class="lock-icon">🔒</div><span class="section-kicker">STAFF ACCESS</span><h2>店員ログイン</h2><p>抽選設定・接続設定は店員専用です。</p>
+        <label class="field"><span>店員PIN</span><input id="staff-pin" inputmode="numeric" type="password" maxlength="6" placeholder="••••" autocomplete="off" /></label>
+        <p class="login-error" id="login-error"></p><button class="primary-button" value="default">設定画面を開く <span>→</span></button><small>PINは店舗責任者が管理します</small>
+      </form>
+    </dialog>
+    <script src="./platform-bridge.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

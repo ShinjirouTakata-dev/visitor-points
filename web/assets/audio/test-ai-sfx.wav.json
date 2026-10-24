@@ -1,0 +1,31 @@
+{
+  "kind": "generate",
+  "title": "test-ai-sfx",
+  "original_idea": "",
+  "audio_type": "sfx",
+  "prompt": "",
+  "prompt_used": "TrackType: SFX, arcade game reward machine, bright rising chime with a crisp sparkle tail, premium digital glass and warm bell, polished stereo, dry indoor kiosk, close microphone.",
+  "sound_fields": {
+    "source": "arcade game reward machine",
+    "action": "bright rising chime with a crisp sparkle tail",
+    "material": "premium digital glass and warm bell, polished stereo",
+    "space": "dry indoor kiosk, close microphone"
+  },
+  "bpm": null,
+  "seconds": 1.5,
+  "negative_prompt": null,
+  "cfg": 5.0,
+  "steps": 8,
+  "variations": 1,
+  "seed": 566852729,
+  "candidate": 1,
+  "file": "test-ai-sfx.wav",
+  "sample_rate": 44100,
+  "bit_depth": 24,
+  "created": "2026-10-22T17:41:00",
+  "backend": "sa3-torch",
+  "model": "sm-sfx + same-s",
+  "peak_dbfs": -1.0,
+  "raw_peak_dbfs": 0.0,
+  "ceiling_gain_db": -1.0
+}

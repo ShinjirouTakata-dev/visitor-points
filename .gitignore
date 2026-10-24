@@ -1,0 +1,25 @@
+# Node.js dependencies and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment and local configuration
+.env
+.env.*
+!.env.example
+
+# Capacitor / Android generated files
+apps/kiosk/android/.gradle/
+apps/kiosk/android/**/build/
+apps/kiosk/android/local.properties
+apps/kiosk/android/.idea/
+apps/kiosk/android/.cxx/
+
+# Editor and OS files
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store

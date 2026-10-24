@@ -1,0 +1,31 @@
+{
+  "kind": "generate",
+  "title": "ai-roulette-hit-v2",
+  "original_idea": "",
+  "audio_type": "sfx",
+  "prompt": "",
+  "prompt_used": "TrackType: SFX, premium arcade reward machine, bright rising reward chime with a crisp sparkle tail, polished digital glass, warm bell and soft synth pluck, dry indoor kiosk, close microphone, clean stereo.",
+  "sound_fields": {
+    "source": "premium arcade reward machine",
+    "action": "bright rising reward chime with a crisp sparkle tail",
+    "material": "polished digital glass, warm bell and soft synth pluck",
+    "space": "dry indoor kiosk, close microphone, clean stereo"
+  },
+  "bpm": null,
+  "seconds": 1.5,
+  "negative_prompt": null,
+  "cfg": 5.0,
+  "steps": 8,
+  "variations": 1,
+  "seed": 490975798,
+  "candidate": 1,
+  "file": "ai-roulette-hit-v2.wav",
+  "sample_rate": 44100,
+  "bit_depth": 24,
+  "created": "2026-10-22T17:48:45",
+  "backend": "sa3-torch",
+  "model": "sm-sfx + same-s",
+  "peak_dbfs": -1.0,
+  "raw_peak_dbfs": 0.0,
+  "ceiling_gain_db": -1.0
+}

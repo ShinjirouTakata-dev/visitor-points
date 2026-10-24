@@ -1,0 +1,31 @@
+{
+  "kind": "generate",
+  "title": "ai-card-flip-v2",
+  "original_idea": "",
+  "audio_type": "sfx",
+  "prompt": "",
+  "prompt_used": "TrackType: SFX, premium playing card, quick elegant card flip with a magical sparkle reveal, paper snap, glassy shimmer, soft velvet transient, intimate kiosk, dry stereo close microphone.",
+  "sound_fields": {
+    "source": "premium playing card",
+    "action": "quick elegant card flip with a magical sparkle reveal",
+    "material": "paper snap, glassy shimmer, soft velvet transient",
+    "space": "intimate kiosk, dry stereo close microphone"
+  },
+  "bpm": null,
+  "seconds": 1.0,
+  "negative_prompt": null,
+  "cfg": 5.0,
+  "steps": 8,
+  "variations": 1,
+  "seed": 135191023,
+  "candidate": 1,
+  "file": "ai-card-flip-v2.wav",
+  "sample_rate": 44100,
+  "bit_depth": 24,
+  "created": "2026-10-22T17:49:22",
+  "backend": "sa3-torch",
+  "model": "sm-sfx + same-s",
+  "peak_dbfs": -1.0,
+  "raw_peak_dbfs": 0.0,
+  "ceiling_gain_db": -1.0
+}

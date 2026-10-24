@@ -1,0 +1,31 @@
+{
+  "kind": "generate",
+  "title": "ai-slot-spin-v2",
+  "original_idea": "",
+  "audio_type": "sfx",
+  "prompt": "",
+  "prompt_used": "TrackType: SFX, luxury game show slot machine, three fast reel clicks accelerating into a punchy jackpot shimmer, metallic clicks, glossy synth, short sub impact, bright arcade cabinet, dry close recording.",
+  "sound_fields": {
+    "source": "luxury game show slot machine",
+    "action": "three fast reel clicks accelerating into a punchy jackpot shimmer",
+    "material": "metallic clicks, glossy synth, short sub impact",
+    "space": "bright arcade cabinet, dry close recording"
+  },
+  "bpm": null,
+  "seconds": 1.2,
+  "negative_prompt": null,
+  "cfg": 5.0,
+  "steps": 8,
+  "variations": 1,
+  "seed": 773041256,
+  "candidate": 1,
+  "file": "ai-slot-spin-v2.wav",
+  "sample_rate": 44100,
+  "bit_depth": 24,
+  "created": "2026-10-22T17:49:03",
+  "backend": "sa3-torch",
+  "model": "sm-sfx + same-s",
+  "peak_dbfs": -1.0,
+  "raw_peak_dbfs": 0.0,
+  "ceiling_gain_db": -1.0
+}

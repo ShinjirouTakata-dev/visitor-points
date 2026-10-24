@@ -1,0 +1,31 @@
+{
+  "kind": "generate",
+  "title": "ai-rank-2-v2",
+  "original_idea": "",
+  "audio_type": "sfx",
+  "prompt": "bright second prize fanfare, elegant marimba and brass sparkle, uplifting arcade reward, polished and celebratory",
+  "prompt_used": "TrackType: SFX, bright second prize fanfare, elegant marimba and brass sparkle, uplifting arcade reward, polished and celebratory.",
+  "sound_fields": {
+    "source": "",
+    "action": "",
+    "material": "",
+    "space": ""
+  },
+  "bpm": null,
+  "seconds": 1.1,
+  "negative_prompt": null,
+  "cfg": 5.0,
+  "steps": 8,
+  "variations": 1,
+  "seed": 1582180414,
+  "candidate": 1,
+  "file": "ai-rank-2-v2.wav",
+  "sample_rate": 44100,
+  "bit_depth": 24,
+  "created": "2026-10-22T17:51:25",
+  "backend": "sa3-torch",
+  "model": "sm-sfx + same-s",
+  "peak_dbfs": -1.0,
+  "raw_peak_dbfs": 0.0,
+  "ceiling_gain_db": -1.0
+}

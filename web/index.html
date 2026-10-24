@@ -13,7 +13,7 @@
         <div class="brand-lockup" aria-label="とくとくタッチ">
           <div class="brand-mark" id="brand-mark">T</div>
           <div>
-            <p class="eyebrow">KITA MART / MEMBER BENEFITS</p>
+            <p class="eyebrow"><span id="brand-name-display">KITA MART</span> / MEMBER BENEFITS</p>
             <strong>とくとくタッチ</strong>
           </div>
         </div>
@@ -73,6 +73,7 @@
               <label class="field"><span>ポート番号（任意）</span><input name="apiPort" type="number" min="1" max="65535" placeholder="443" /><small>未入力時はプロトコル標準ポート</small></label>
               <label class="field"><span>店舗コード</span><input name="storeId" type="number" min="1" max="99999" value="123" /><small>1〜99999</small></label>
               <label class="field"><span>店舗名称</span><input name="storeName" type="text" maxlength="40" value="北町店" /><small>お客様画面の店舗表示に反映</small></label>
+              <label class="field"><span>ブランド名称</span><input name="brandName" type="text" maxlength="40" value="KITA MART" /><small>ヘッダーの「KITA MART」表示に反映</small></label>
               <label class="field"><span>端末番号</span><input name="terminalNo" type="number" min="1" max="99999" value="1" /><small>1〜99999</small></label>
               <label class="field field-wide"><span>とくとくタッチ アイコン画像</span><input name="brandImage" type="file" accept="image/png,image/jpeg,image/webp" /><small>ヘッダー右側の店舗アイコンとして表示</small></label>
               <label class="field field-wide"><span>会員登録QRコード画像</span><input name="registrationQr" type="file" accept="image/png,image/jpeg,image/webp" /><small>会員証をお持ちでない方向けに表示する任意QRコード</small></label>

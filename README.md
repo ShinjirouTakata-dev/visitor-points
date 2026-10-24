@@ -13,7 +13,9 @@ visitor-points/
 │  ├─ platform-bridge.js        # Androidネイティブ連携
 │  ├─ styles.css                # 画面デザイン・アニメーション
 │  ├─ assets/audio/             # BGM・効果音
-│  └─ vendor/zxing-browser.min.js # Windowsブラウザ用バーコード解析
+│  └─ vendor/                   # Windowsブラウザ用バーコード解析
+│     ├─ quagga.min.js          # 位置・傾き補正付き1D解析（MIT）
+│     └─ zxing-browser.min.js   # 追加フォールバック解析
 └─ apps/kiosk/                  # Capacitorプロジェクト
    ├─ android/                  # Android Studioプロジェクト
    ├─ windows/                  # Windows Edgeキオスク起動スクリプト
@@ -79,13 +81,22 @@ Android実機でカメラを使用する場合は、カメラ権限を許可し�
 ## カメラ・バーコード読み取りの注意事項
 
 - Windowsは必ず `http://127.0.0.1` で起動してください。`file://` で直接開くとカメラ権限や読み取りが不安定になります。
-- Edgeでは標準BarcodeDetectorとZXingを併用し、JAN-8、JAN-13、NW-7を読み取ります。
+- EdgeではQuagga2（主解析）、標準BarcodeDetector、ZXingを併用し、JAN-8、JAN-13、NW-7を読み取ります。
 - AndroidではML Kit Barcode Scanningを使用します。
 - カメラはバーコードに正対させ、15〜30cm程度の距離を保ってください。
 - 反射、暗い照明、手ぶれ、バーコードの小さすぎる表示は認識率を下げます。
 - NW-7は開始・終了キャラクターをチェックし、APIには数値部分のみを設定します。
 - 認識できない場合は、画面下部の手入力欄またはUSBバーコードリーダーを利用してください。
 - ブラウザのカメラ権限を拒否した場合は、Edgeのサイト権限からカメラを許可してください。
+
+## バーコードSDK候補の調査結果
+
+- **Quagga2**：MITライセンス。EAN、EAN-8、CODABARなどの1Dバーコードに対応し、映像内の位置・傾き・スケールを推定するロケーターを備えるため、Windowsの主解析として採用しています。
+- **ZXing Browser**：オープンソースの追加フォールバックとして採用済みです。Quagga2で初期化できない場合に利用します。
+- **Dynamsoft Barcode Reader JS**：ブラウザ向け高性能SDKですが、無償利用は組み込み24時間試用または申請制30日評価で、本番利用にはライセンスが必要です。
+- **Scandit Web SDK**：高精度でCodabarにも対応しますが、無償版は30日試用で、終了後は本番ライセンスが必要です。
+
+商用SDKは、Quagga2・ZXingで実機の認識率が要件を満たさない場合に、評価ライセンスを取得して同一端末・同一バーコードで比較検証する候補です。
 
 ## 店員設定
 

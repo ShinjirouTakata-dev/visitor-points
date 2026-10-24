@@ -34,7 +34,9 @@ cd C:\Users\TEC-14125-01\visitor-points\apps\kiosk
 powershell -ExecutionPolicy Bypass -File .\windows\start-edge-kiosk.ps1
 ```
 
-起動スクリプトは、`web/` をPythonのローカルHTTPサーバーで公開し、Edgeをキオスクモードで起動します。
+起動スクリプトは、Node.jsで`web/`をローカルHTTPサーバーとして公開し、Edgeをキオスクモードで起動します。Pythonは不要です。
+
+ブラウザから確認する場合のURLは `http://127.0.0.1:5173/` です。`http://127.0.0.1/` はポート80のため、本アプリには接続できません。
 
 ## Androidでの起動・同期
 

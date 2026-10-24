@@ -15,7 +15,8 @@
         const requested = await nativeBarcodeScanner.requestPermissions();
         if (requested.camera !== 'granted') throw new Error('CAMERA_PERMISSION_DENIED');
       }
-      const result = await nativeBarcodeScanner.scan({ formats: ['EAN_8', 'EAN_13', 'CODABAR'] });
+      // Enlarge distant barcodes automatically for fixed kiosk cameras.
+      const result = await nativeBarcodeScanner.scan({ formats: ['EAN_8', 'EAN_13', 'CODABAR'], autoZoom: true });
       const barcode = result.barcodes?.[0];
       return barcode ? { rawValue: barcode.rawValue, format: formatMap[barcode.format] || String(barcode.format || '').toLowerCase() } : null;
     },

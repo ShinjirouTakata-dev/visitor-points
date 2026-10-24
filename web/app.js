@@ -173,7 +173,7 @@ function renderReport() { const days = Array.from({ length: 7 }, (_, index) => {
 
 const staffDialog = document.querySelector('#staff-dialog');
 document.querySelector('[data-action="staff-login"]').addEventListener('click', () => { document.querySelector('#staff-pin').value = ''; document.querySelector('#login-error').textContent = ''; staffDialog.showModal(); });
-document.querySelector('#staff-login-form').addEventListener('submit', (event) => { event.preventDefault(); if (document.querySelector('#staff-pin').value !== '2468') { document.querySelector('#login-error').textContent = 'PINが正しくありません。'; return; } staffDialog.close(); adminView.hidden = false; customerView.hidden = true; app.dataset.mode = 'admin'; renderSettings(); });
+document.querySelector('#staff-login-form').addEventListener('submit', (event) => { event.preventDefault(); if (document.querySelector('#staff-pin').value !== '5963') { document.querySelector('#login-error').textContent = 'PINが正しくありません。'; return; } staffDialog.close(); adminView.hidden = false; customerView.hidden = true; app.dataset.mode = 'admin'; renderSettings(); });
 
 function renderSettings() {
   const rows = document.querySelector('#prize-rows');

@@ -10,11 +10,18 @@ $edgeCandidates = @(
 $edge = $edgeCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
 if (-not $edge) { throw 'Microsoft Edge executable was not found.' }
 
-$node = Get-Command node -ErrorAction SilentlyContinue
-if (-not $node) { throw 'Node.js was not found. Install Node.js and retry.' }
+$nodeCandidates = @()
+$nodeCommand = Get-Command node -ErrorAction SilentlyContinue
+if ($nodeCommand) { $nodeCandidates += $nodeCommand.Source }
+$nodeCandidates += "$env:ProgramFiles\nodejs\node.exe"
+$nodeCandidates += "$env:LocalAppData\Programs\nodejs\node.exe"
+$nodePath = $nodeCandidates | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+if (-not $nodePath) { throw 'Node.js was not found. Install Node.js and retry.' }
 $serverScript = Join-Path $PSScriptRoot '..\scripts\serve-web.mjs'
-$server = Start-Process -WindowStyle Hidden -PassThru -FilePath $node.Source -ArgumentList @($serverScript, '--port', $port, '--directory', $webRoot)
+$stdoutLog = Join-Path $env:TEMP 'visitor-points-web-server.out.log'
+$stderrLog = Join-Path $env:TEMP 'visitor-points-web-server.err.log'
+$server = Start-Process -WindowStyle Hidden -PassThru -FilePath $nodePath -ArgumentList @($serverScript, '--port', $port, '--directory', $webRoot) -RedirectStandardOutput $stdoutLog -RedirectStandardError $stderrLog
 Start-Sleep -Milliseconds 700
 try { Invoke-WebRequest -UseBasicParsing -Uri "http://127.0.0.1:$port/" -TimeoutSec 3 | Out-Null }
-catch { if ($server.HasExited) { throw "Web server failed to start. ExitCode=$($server.ExitCode)" }; throw }
+catch { if ($server.HasExited) { $details = if (Test-Path -LiteralPath $stderrLog) { Get-Content -LiteralPath $stderrLog -Raw } else { '' }; throw "Web server failed to start. ExitCode=$($server.ExitCode) $details" }; throw }
 Start-Process -FilePath $edge -ArgumentList @('--kiosk', "http://127.0.0.1:$port/", '--no-first-run', '--disable-session-crashed-bubble')

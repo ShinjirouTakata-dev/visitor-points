@@ -1,0 +1,7 @@
+{
+  "name": "PointPass 来店ポイントシステム",
+  "description": "JAN/NW-7バーコードカメラ読み取りから会員照会、直感的なミニゲーム選択、現在pt→付与pt→合計ptの流れるような付与遷移と、N秒自動TOP復帰を備えた店舗来店ポイントシステム。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
